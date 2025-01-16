@@ -26,7 +26,7 @@ export const AddressDefault = (): Address => ({
 });
 
 export const Address = {
-  Default: AddressDefault(),
+  Default: AddressDefault,
   Operations: {
     VisibleFields: OrderedMap<
       keyof Address,
@@ -62,7 +62,11 @@ export const AddressFormConfig = AddressFormBuilder.config({
     PromiseRepo.Default.mock(validate.lengthOf(value).isGreaterThan(3))
   )
     .withView(PersonFieldViews.StringView())
-    .mapContext((context) => ({ ...context, label: "street" })),
+    .mapContext((context) => ({
+      ...context,
+      label: "street",
+      showAllErrors: true,
+    })),
 
   number: StringForm<CharacterFormPredicateContext & FormLabel, Unit>((value) =>
     PromiseRepo.Default.mock(validate.lengthOf(value).isGreaterThan(1))

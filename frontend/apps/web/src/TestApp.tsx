@@ -13,8 +13,8 @@ const TestApp = () => {
   );
   const [characterState, setCharacterState] = useState(CharacterState.Default);
   return (
-    <div>
-      <h1>Test App</h1>
+    <div className="TestApp">
+      <h1>Trying out Ballerina! 🩰</h1>
       <CharacterForm
         context={{
           ...characterFormState,

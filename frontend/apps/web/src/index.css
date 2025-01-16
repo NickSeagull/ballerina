@@ -72,3 +72,31 @@ button:focus-visible {
 li {
   list-style-type: none;
 }
+
+.test-character {
+  display: flex;
+}
+
+.test-character > div {
+  margin: 2rem;
+  border: white 1px solid;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.test-edit-card {
+  display: flex
+}
+
+.test-edit-card > div {
+  margin: 1rem;
+}
+
+.not-editing {
+  opacity: 0;
+}
+
+.TestApp {
+  margin: 2rem;
+
+}

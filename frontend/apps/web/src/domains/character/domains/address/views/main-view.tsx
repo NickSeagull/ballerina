@@ -1,4 +1,4 @@
-import { EntityFormView, Unit } from "ballerina-core/main";
+import { EntityFormView, unit, Unit } from "ballerina-core/main";
 import { Address, AddressFormState } from "../state";
 import { MostUglyValidationDebugView } from "../../../../person/views/field-views";
 import { CharacterFormPredicateContext } from "../../predicates";
@@ -11,9 +11,20 @@ export type AddressView = EntityFormView<
   Unit
 >;
 
-export const AddressView: AddressView = (props) => (
-  <>
-    <h2>My Address</h2>
-    <MostUglyValidationDebugView {...props} />
-  </>
-);
+export const AddressView: AddressView = (props) => {
+  const field = (key: keyof Address) =>
+    props.EmbeddedFields[key]({
+      ...props,
+      context: { ...props.context, disabled: false },
+      view: unit,
+    });
+  return (
+    <>
+      <h3>Address</h3>
+      {field("street")}
+      {field("number")}
+      {field("city")}
+      <MostUglyValidationDebugView {...props} />
+    </>
+  );
+};
